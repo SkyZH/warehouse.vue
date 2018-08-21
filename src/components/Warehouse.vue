@@ -1,5 +1,5 @@
 <template>
-  <div></div>
+  <div><div>{{ commands }}</div></div>
 </template>
 
 <script lang="ts">
@@ -27,6 +27,8 @@ export default class Warehouse extends Vue
     this.update_data(val);
   }
 
+  private commands: any = {};
+
   update_data(current: number) {
     const entry = d3.select('.entry');
     const objects = (data as any).data[current].objects;
@@ -40,6 +42,7 @@ export default class Warehouse extends Vue
         .attr('height', B_SIZE)
         .attr('fill', (d: any) => c(d.id))
         .attr('stroke', "#fff");
+    this.commands = (data as any).data[current].scheduler.commands;
   }
 
   mounted() {
