@@ -1,11 +1,17 @@
 <template>
   <div id="app">
-    <Warehouse />
+    <div class="container">
+      <nav class="navbar navbar-light bg-light">
+        <span class="navbar-brand">Warehouse Simulator Visulization</span>
+      </nav>
+      <Warehouse :current="current" />
+      <input type="number" class="form-control" v-model="current">
+    </div>
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Component, Vue, Prop } from 'vue-property-decorator';
 import Warehouse from './components/Warehouse.vue';
 
 @Component({
@@ -13,8 +19,12 @@ import Warehouse from './components/Warehouse.vue';
     Warehouse,
   },
 })
-export default class App extends Vue {}
+export default class App extends Vue {
+  private current: number = 0;
+}
 </script>
 
-<style>
+<style lang="scss">
+@import "bootstrap/scss/bootstrap.scss";
+
 </style>
