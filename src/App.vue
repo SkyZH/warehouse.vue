@@ -5,7 +5,9 @@
         <span class="navbar-brand">Warehouse Simulator Visulization</span>
       </nav>
       <Warehouse :current="current" />
-      <input type="number" class="form-control" v-model="current">
+      <input type="number" class="form-control my-1" v-model="current">
+      <button class="btn btn-block btn-light" v-on:click="current -= 1">Previous</button>
+      <button class="btn btn-block btn-light" v-on:click="current += 1">Next</button>
     </div>
   </div>
 </template>
@@ -16,7 +18,7 @@ import Warehouse from './components/Warehouse.vue';
 
 @Component({
   components: {
-    Warehouse,
+    Warehouse
   },
 })
 export default class App extends Vue {

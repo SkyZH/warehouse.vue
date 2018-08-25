@@ -1,11 +1,12 @@
 <template>
-  <div><div>{{ commands }}</div></div>
+  <div><div></div><CommandList :commands="commands" /></div>
 </template>
 
 <script lang="ts">
 import { Component, Prop, Vue, Watch } from 'vue-property-decorator';
 import * as d3 from 'd3';
 import _ from 'lodash';
+import CommandList from './CommandList.vue';
 
 const data = require('./data/data.json');
 const B_SIZE = 30, B_MARGIN = 5;
@@ -18,7 +19,11 @@ const c = (c: string) => { switch(c.substring(0, 3)) {
   default: return "#000000";
 }};
 
-@Component
+@Component({
+  components: {
+    CommandList
+  },
+})
 export default class Warehouse extends Vue 
 {
   @Prop() private current: number = 0;
@@ -46,7 +51,7 @@ export default class Warehouse extends Vue
   }
 
   mounted() {
-    d3.select(this.$el)
+    d3.select(this.$el).select('div')
       .append('svg')
       .attr('width', 800)
       .attr('height', 600)
